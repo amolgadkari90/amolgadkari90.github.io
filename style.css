@@ -1,13 +1,10 @@
+/* Same as previous — keeping the refined dark theme with cyan/blue accents, Inter + DM Serif, animations, hover effects, blur cards, responsive media queries. No major changes needed here unless you want tweaks. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background: linear-gradient(135deg, #0f0f1a 0%, #0a0e1f 100%);
   color: #e0e7ff;
   line-height: 1.7;
@@ -25,19 +22,13 @@ body {
 .hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
   background: radial-gradient(circle at 30% 20%, rgba(56,189,248,0.12), transparent 40%);
   pointer-events: none;
 }
 
-.hero-content {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-}
+.hero-content { max-width: 900px; margin: 0 auto; position: relative; }
 
 .hero h1 {
   font-family: 'DM Serif Display', serif;
@@ -84,11 +75,8 @@ h2 {
   text-align: center;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
-}
+/* Card, roadmap, footer, animations — identical to previous version for consistency */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
 
 .card {
   background: rgba(15, 23, 42, 0.7);
@@ -113,11 +101,7 @@ h2 {
   font-weight: 400;
 }
 
-.card p {
-  font-size: 1rem;
-  color: #cbd5e1;
-  margin-bottom: 1.5rem;
-}
+.card p { font-size: 1rem; color: #cbd5e1; margin-bottom: 1.5rem; }
 
 .card a {
   display: inline-block;
@@ -127,16 +111,9 @@ h2 {
   transition: color 0.3s;
 }
 
-.card a:hover {
-  color: #60a5fa;
-  text-decoration: underline;
-}
+.card a:hover { color: #60a5fa; text-decoration: underline; }
 
-.roadmap {
-  list-style: none;
-  font-size: 1.1rem;
-  color: #cbd5e1;
-}
+.roadmap { list-style: none; font-size: 1.1rem; color: #cbd5e1; }
 
 .roadmap li {
   padding: 16px 0;
@@ -145,9 +122,7 @@ h2 {
   padding-left: 28px;
 }
 
-.roadmap li strong {
-  color: #a5b4fc;
-}
+.roadmap li strong { color: #a5b4fc; }
 
 .roadmap li::before {
   content: "→";
@@ -165,10 +140,7 @@ footer {
   border-top: 1px solid #1e293b;
 }
 
-.copyright {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-}
+.copyright { margin-top: 1.5rem; font-size: 0.9rem; }
 
 /* Animations */
 .fade-in {
@@ -185,10 +157,7 @@ footer {
 .delay-6 { animation-delay: 1.45s; }
 
 @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive */
