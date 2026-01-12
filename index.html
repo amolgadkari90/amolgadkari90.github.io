@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rewardly – Smart Employee Rewards & Recognition Platform</title>
+  <title>Portfolio Showcase – Microservices Architecture</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,64 +13,68 @@
 
   <header class="hero">
     <div class="hero-content">
-      <h1 class="fade-in">Rewardly</h1>
+      <h1 class="fade-in">Microservices-Based Application</h1>
       <p class="fade-in delay-1 hero-subtitle">
-        Transform the way your team feels valued. Reward performance, celebrate milestones, and build a winning culture — without complicated setup or high costs.
+        A modular, scalable backend system architected with independent services, demonstrating modern distributed systems principles.
       </p>
       <p class="fade-in delay-2 tagline">
-        Built for growing Indian businesses | Scalable microservices architecture | 100% focused on employee motivation & retention
+        Built to showcase clean architecture, loose coupling, independent deployability, and enterprise-grade patterns.
       </p>
     </div>
   </header>
 
   <section class="container fade-in delay-3">
-    <h2>Why Rewardly?</h2>
+    <h2>Project Overview</h2>
     <p class="section-intro">
-      In today's competitive talent market, appreciation drives loyalty more than ever. Rewardly brings powerful, yet simple employee rewards & recognition system — designed specially for startups, SMEs and fast-growing companies across India.
+      This project implements a microservices architecture where each service owns a specific domain, communicates via well-defined APIs, and can be developed, deployed, and scaled independently. It follows best practices like domain-driven design boundaries, API-first approach, and resilience considerations — making it a strong example of production-ready backend engineering.
     </p>
   </section>
 
   <section class="container fade-in delay-4">
-    <h2>Core Microservices Powering Rewardly</h2>
+    <h2>Implemented Services</h2>
     <div class="card-grid">
       <div class="card">
         <h3>Employee Service</h3>
-        <p>Central hub for employee profiles, hierarchy, performance data and lifecycle events. Handles everything from onboarding to meaningful recognition moments.</p>
-        <a href="https://github.com/amolgadkari90/Rewardly-Employee-Service-v2" target="_blank" rel="noopener">Explore Repository →</a>
+        <p>Core service managing employee entities, organizational structure, profiles, and business-domain logic. Serves as the single source of truth for personnel data across the system.</p>
+        <a href="https://github.com/amolgadkari90/Rewardly-Employee-Service-v2" target="_blank" rel="noopener">View Repository →</a>
       </div>
 
       <div class="card">
-        <h3>Bonus & Rewards Service</h3>
-        <p>Intelligent bonus calculation, incentive engine, reward catalog and instant payouts. Fully decoupled to scale rewards during peak performance cycles.</p>
-        <a href="https://github.com/amolgadkari90/Rewardly-Bonus-Service-v2" target="_blank" rel="noopener">Explore Repository →</a>
+        <h3>Bonus Service</h3>
+        <p>Independent service responsible for performance-based calculations, incentive processing, reward logic, and transaction handling — decoupled for focused scaling and maintainability.</p>
+        <a href="https://github.com/amolgadkari90/Rewardly-Bonus-Service-v2" target="_blank" rel="noopener">View Repository →</a>
       </div>
 
       <div class="card">
-        <h3>Modern Frontend</h3>
-        <p>Responsive, intuitive dashboard employees and managers love using — built to consume APIs seamlessly and deliver delightful experience on any device.</p>
-        <a href="https://github.com/amolgadkari90/Rewardly-Employee-Service-Frontend-v2" target="_blank" rel="noopener">Explore Repository →</a>
+        <h3>Frontend Application</h3>
+        <p>Modern responsive UI consuming the backend microservices via REST APIs. Demonstrates clean API integration, state management, and user-centric design in a distributed environment.</p>
+        <a href="https://github.com/amolgadkari90/Rewardly-Employee-Service-Frontend-v2" target="_blank" rel="noopener">View Repository →</a>
       </div>
     </div>
   </section>
 
   <section class="container fade-in delay-5">
-    <h2>Our Roadmap – Building for Scale</h2>
+    <h2>Roadmap & Future Enhancements</h2>
+    <p class="section-intro">
+      Actively evolving this architecture toward full enterprise maturity with patterns used in large-scale production systems.
+    </p>
     <ul class="roadmap">
-      <li><strong>API Gateway & Rate Limiting</strong> — secure, unified entry point for all services</li>
-      <li><strong>Service Discovery & Config Server</strong> — zero-downtime scaling & centralized management</li>
-      <li><strong>Real-time Analytics & Reward Insights</strong> — understand what truly motivates your team</li>
-      <li><strong>Advanced Security & RBAC</strong> — enterprise-grade access control & audit trails</li>
-      <li><strong>Centralized Observability</strong> — logging, tracing, metrics — complete visibility</li>
-      <li><strong>Mobile-first Employee App</strong> — instant rewards, peer recognition on the go</li>
+      <li><strong>API Gateway</strong> — Unified entry point, routing, rate limiting, and authentication</li>
+      <li><strong>Service Discovery & Registry</strong> — Dynamic service location and health checks</li>
+      <li><strong>Centralized Configuration</strong> — Externalized, versioned config with refresh support</li>
+      <li><strong>Observability Stack</strong> — Distributed tracing, structured logging, metrics collection</li>
+      <li><strong>Security Layer</strong> — JWT/OAuth, role-based access control (RBAC), audit logging</li>
+      <li><strong>Resilience & Fault Tolerance</strong> — Circuit breakers, retries, timeouts, fallback patterns</li>
+      <li><strong>CI/CD & Deployment Automation</strong> — Containerization, orchestration readiness</li>
     </ul>
   </section>
 
   <footer class="fade-in delay-6">
     <p>
-      Rewardly is crafted with real-world Indian business needs in mind — scalability, compliance readiness & employee delight.<br>
-      Actively evolving into a full-fledged HR-tech powerhouse.
+      This microservices implementation highlights my focus on scalable, maintainable backend systems using industry-standard patterns.<br>
+      Part of a growing portfolio of projects — more coming soon.
     </p>
-    <p class="copyright">© 2026 Rewardly Project. Built with passion in Pune.</p>
+    <p class="copyright">© 2026 Amol Gadkari | Pune, India</p>
   </footer>
 
 </body>
