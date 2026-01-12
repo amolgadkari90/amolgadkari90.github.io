@@ -7,41 +7,443 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --primary-dark: #1e40af;
+      --accent: #f97316;
+      --accent-light: #fb923c;
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-gradient-start: #eff6ff;
+      --bg-gradient-end: #fef3c7;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: rgba(37, 99, 235, 0.08);
+      --shadow-hover: rgba(37, 99, 235, 0.15);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 1.05rem;
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.03) 0%, transparent 50%);
+      z-index: -1;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Header */
+    .main-header {
+      padding: 60px 40px 40px;
+      text-align: center;
+    }
+
+    .header-content {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .tagline {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+
+    .credentials {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem 1.8rem;
+      font-size: 1.05rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .contact-item:hover {
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 40px 100px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(249,115,34,0.1));
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 780px;
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 18px 48px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.15rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px var(--shadow-hover);
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    }
+
+    /* Sections */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      padding: 40px;
+      border-radius: 20px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(37,99,235,0.12);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+      color: white;
+    }
+
+    .card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+    }
+
+    .card a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .card a:hover {
+      color: var(--accent);
+    }
+
+    /* Roadmap */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .roadmap-item {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      padding: 28px 28px 28px 70px;
+      border-radius: 16px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .roadmap-item::before {
+      content: '✓';
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .roadmap-item:hover {
+      border-color: var(--primary);
+      transform: translateX(8px);
+      box-shadow: 0 8px 16px rgba(37,99,235,0.1);
+    }
+
+    .roadmap-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .roadmap-item p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .main-footer {
+      padding: 80px 40px 60px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(249,115,34,0.04));
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-primary);
+    }
+
+    .footer-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .footer-links li {
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      text-decoration: none;
+    }
+
+    .footer-contact-item:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom p {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-header, .hero, .container, .main-footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .card-grid, .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <!-- Header -->
   <header class="main-header">
     <div class="header-content">
-      <div class="header-left">
-        <h1 class="name">Amol Gadkari</h1>
-        <p class="tagline">Full Stack Developer | Spring Boot | Angular | Microservices</p>
-        <p class="credentials">Electronics Engineer • Six Sigma Green Belt • Founder</p>
-      </div>
-      <div class="header-right">
-        <div class="contact-info">
-           <a href="tel:+918971555597" class="contact-item">
-            <span class="icon">✉️</span>
-            +918971555597
-          </a>
-          <a href="mailto:amolgadkari90@gmail.com" class="contact-item">
-            <span class="icon">✉️</span>
-            amolgadkari90@gmail.com
-          </a>
-          <a href="https://github.com/amolgadkari90" target="_blank" class="contact-item">
-            <span class="icon">💻</span>
-            github.com/amolgadkari90
-          </a>
-          <div class="contact-item">
-            <span class="icon">📍</span>
-            Pune, Maharashtra
-          </div>
+      <h1 class="name">Amol Gadkari</h1>
+      <p class="tagline">Full Stack Developer | Spring Boot | Angular | Microservices</p>
+      <p class="credentials">Electronics Engineer • Six Sigma Green Belt • Founder</p>
+
+      <div class="contact-info">
+        <a href="tel:+918971555597" class="contact-item">
+          <span class="icon">📞</span>
+          +91 89715 55597
+        </a>
+        <a href="mailto:amolgadkari90@gmail.com" class="contact-item">
+          <span class="icon">✉️</span>
+          amolgadkari90@gmail.com
+        </a>
+        <a href="https://github.com/amolgadkari90" target="_blank" class="contact-item">
+          <span class="icon">💻</span>
+          github.com/amolgadkari90
+        </a>
+        <div class="contact-item">
+          <span class="icon">📍</span>
+          Pune, Maharashtra
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-badge">🚀 ENTERPRISE-READY ARCHITECTURE</div>
     <h2>Microservices-Based<br>Application Platform</h2>
@@ -51,7 +453,7 @@
     <a href="#services" class="cta-button">Explore the Architecture</a>
   </section>
 
-  <!-- Services Section -->
+  <!-- Services -->
   <section class="container" id="services">
     <div class="section-header">
       <h2>Live Services in Production</h2>
@@ -62,100 +464,8 @@
         <div class="card-icon">👥</div>
         <h3>Employee Management Service</h3>
         <p>Handles everything employee-related—from onboarding to offboarding. Built with proper validation layers, error handling, and RESTful APIs that actually make sense. Think of it as your HR department's best friend.</p>
-        <a href="https://github.com/amolgadkari90/Rewardly-Employee-Service-v2" target="_blank">
-          Check the Code →
-        </a>
+        <a href="https://github.com/amolgadkari90/Rewardly-Employee-Service-v2" target="_blank">Check the Code →</a>
       </div>
       <div class="card">
         <div class="card-icon">💰</div>
-        <h3>Bonus Calculation Service</h3>
-        <p>Completely isolated service managing bonus calculations and payroll processing. No cross-dependencies, no messy coupling—just clean, event-driven architecture that processes financial transactions reliably.</p>
-        <a href="https://github.com/amolgadkari90/Rewardly-Bonus-Service-v2" target="_blank">
-          Check the Code →
-        </a>
-      </div>
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>Frontend Dashboard</h3>
-        <p>Modern, responsive interface that talks to backend services seamlessly. Built with proper state management, optimized rendering, and smooth user flows—because nobody likes laggy applications.</p>
-        <a href="https://github.com/amolgadkari90/Rewardly-Employee-Service-Frontend-v2" target="_blank">
-          Check the Code →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Roadmap Section -->
-  <section class="container">
-    <div class="section-header">
-      <h2>What's Coming Next</h2>
-      <p>Currently building out the full suite of enterprise features that'll make this platform production-ready for any organization. Here's what's in the pipeline:</p>
-    </div>
-    <div class="roadmap-grid">
-      <div class="roadmap-item">
-        <h4>API Gateway & Rate Limiting</h4>
-        <p>Single entry point for all services with intelligent request routing and throttling—stops abuse, manages traffic, keeps things running smoothly.</p>
-      </div>
-      <div class="roadmap-item">
-        <h4>Service Discovery & Config Server</h4>
-        <p>Services find each other automatically, configuration changes happen without downtime—zero manual intervention needed.</p>
-      </div>
-      <div class="roadmap-item">
-        <h4>Real-time Analytics Dashboard</h4>
-        <p>Live insights into what's happening across the platform—track performance, spot issues before users do, make data-driven decisions.</p>
-      </div>
-      <div class="roadmap-item">
-        <h4>Advanced Security & RBAC</h4>
-        <p>Enterprise-grade authentication, role-based access control, complete audit trails—basically Fort Knox for your data.</p>
-      </div>
-      <div class="roadmap-item">
-        <h4>Centralized Observability Stack</h4>
-        <p>Distributed tracing, centralized logging, metrics everywhere—full visibility into what every service is doing, all the time.</p>
-      </div>
-      <div class="roadmap-item">
-        <h4>Mobile-First Employee App</h4>
-        <p>Native experience on the go—instant rewards, peer recognition, real-time updates right in your pocket.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Amol Gadkari</h3>
-        <p>Full Stack Developer specializing in scalable microservices architecture, Spring Boot ecosystems, and modern Angular applications.</p>
-      </div>
-      <div class="footer-section">
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="#services">Projects</a></li>
-          <li><a href="https://github.com/amolgadkari90" target="_blank">GitHub Profile</a></li>
-          <li><a href="mailto:amolgadkari90@gmail.com">Get in Touch</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Let's Connect</h4>
-        <div class="footer-contact">
-          <a href="mailto:amolgadkari90@gmail.com" class="footer-contact-item">
-            <span class="icon">✉️</span>
-            amolgadkari90@gmail.com
-          </a>
-          <a href="https://github.com/amolgadkari90" target="_blank" class="footer-contact-item">
-            <span class="icon">💻</span>
-            GitHub
-          </a>
-          <div class="footer-contact-item">
-            <span class="icon">📍</span>
-            Pune, Maharashtra
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Built with production-ready patterns, scalability in mind, and the kind of architecture that actually works in the real world.</p>
-      <p class="copyright">© 2025 Amol Gadkari. All rights reserved.</p>
-    </div>
-  </footer>
-</body>
-</html>
+        <h3>Bonus Calculation Service
